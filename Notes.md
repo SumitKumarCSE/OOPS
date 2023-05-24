@@ -523,5 +523,159 @@ int main() {
     return 0;
 }
 ```
+![Alt text](https://github.com/SumitKumarCSE/OOPS/blob/main/shallowcopy.png)
+`Deep copy`: An object is created by copying all the fields, and it also allocates similar memory resources with the same value to the object. To perform deep copy, we need to explicitly define the copy constructor and assign dynamic memory as well if required. Also, it is necessary to allocate memory to the other constructors variables dynamically. 
 
-![alt text](![image]([https://github.com/SumitKumarCSE/OOPS/assets/102703158/40ee9e35-14a2-4322-aa9b-c3578438acf8](https://github-production-user-asset-6210df.s3.amazonaws.com/102703158/240628403-40ee9e35-14a2-4322-aa9b-c3578438acf8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230524%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230524T135944Z&X-Amz-Expires=300&X-Amz-Signature=0baf1a2bb81d1ae9fee0686028ea389b6b21eca3e8c2468576e45e943841bec1&X-Amz-SignedHeaders=host&actor_id=102703158&key_id=0&repo_id=644699532)))
+A deep copy means creating a new array and copying over the values. 
+
+Changes to the array values referred to will not result in changes to the array data refers to.
+![Alt text](https://github.com/SumitKumarCSE/OOPS/blob/main/deepcopy.png)
+# Virtual Function
+A virtual function is a member function in the base class that we expect to redefine in derived classes. It is declared using the virtual keyword. Virtual functions are mainly used to achieve runtime polymorphism.
+
+A virtual function is used in the base class to ensure that the function is overridden. This especially applies to cases where a pointer of base class points to a derived class object.
+```javascript
+class Base{
+  public:
+    virtual void print() {
+      cout<<"Base Function"<<endl;
+    }
+};
+
+class Derived : public Base {
+  public:
+    void print() {
+      cout<<"Dervied Function"<<endl;
+    }
+};
+
+int main() {
+  Derived derived1;
+  
+  // pointer of Base type that points to derived1
+  Base* base1 = &derived1;
+  
+  //calls member function of Derived class
+  base1->print();
+  
+  return 0;
+)
+
+Output:
+Derived Function
+```
+`Pure Virutal Function`: A pure virtual function is a virtual function in C++ for which we need not write any function definition and only have to declare it. It is declared by assigning 0 in the declaration.
+
+A pure virtual function (or abstract function) in C++ is a virtual function for which we can implement, But we must override that function in the derived class; otherwise, the derived class will also become an abstract class.
+
+`Abstract Class`: Abstract classes can’t be instantiated, i.e., we cannot create an object of this class. However, we can derive a class from it and instantiate the object of the derived class. An Abstract class has at least one pure virtual function.
+
+It can have normal functions and variables along with pure virtual functions. 
+
+Constructors cannot be virtual because they need to be defined in the class.
+```javascript
+#include <iostream>
+using namespace std;
+
+// Abstract base class
+class Shape {
+public:
+    // Pure virtual function
+    virtual double area() const = 0;
+
+    // Concrete member function
+    void displayArea() const {
+        cout << "Area: " << area() << endl;
+    }
+};
+
+// Derived class
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    double area() const override {
+        return 3.14 * radius * radius;
+    }
+};
+
+// Derived class
+class Rectangle : public Shape {
+private:
+    double length;
+    double width;
+
+public:
+    Rectangle(double l, double w) : length(l), width(w) {}
+
+    double area() const override {
+        return length * width;
+    }
+};
+
+int main() {
+    // Creating objects of derived classes
+    Circle circle(5.0);
+    Rectangle rectangle(4.0, 6.0);
+
+    // Calling member function on objects
+    circle.displayArea();     // Output: Area: 78.5
+    rectangle.displayArea();  // Output: Area: 24
+
+    // Creating pointer to the abstract base class
+    Shape* shapePtr = nullptr;
+
+    // Pointing to the Circle object and calling member function
+    shapePtr = &circle;
+    shapePtr->displayArea();  // Output: Area: 78.5
+
+    // Pointing to the Rectangle object and calling member function
+    shapePtr = &rectangle;
+    shapePtr->displayArea();  // Output: Area: 24
+
+    return 0;
+}
+```
+If we do not override the pure virtual function in the derived class, then the derived class also becomes an abstract class.
+
+`Friend Function`: If a function is defined as a friend function in C++, then the protected and private data of a class can be accessed using the function. 
+
+A class’s friend function is defined outside that class’s scope, but it has the right to access all private and protected members of the class. Even though the prototypes for friend functions appear in the class definition, friends are not member functions. 
+
+The function can be defined anywhere in the program like a normal C++ function. The function definition does not use either the keyword friend or scope resolution operator
+```javascript
+class Rectangle {
+  private:
+    int length;
+  public:
+    Rectangle() {
+      length=10;
+    }
+  friend int printLength(Rectangle);
+};
+
+int printLength(Rectangle b) {
+  Rectangle b;
+  cout<<"Length of Rectangle: "<<printLength(b)<<endl;
+  return 0;
+}
+
+Output:
+Length of Reactangle: 20
+```
+Characteristics of friend function: 
+
+● A friend function can be declared in the private or public section of the class. 
+
+● It can be called a normal function without using the object. 
+
+● A friend function is not in the scope of the class, of which it is a friend. 
+
+● A friend function is not invoked using the class object as it is not in the class’s scope. 
+
+● A friend function cannot access the private and protected data members of the class directly. It needs to make use of a class object and then access the members using the dot operator. 
+
+● A friend function can be a global function or a member of another class.
