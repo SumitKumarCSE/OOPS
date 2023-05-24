@@ -26,8 +26,8 @@ By default: All class members are private if you don’t specify an access speci
 It is defined as wrapping up of data and information under a single unit. In object-oriented programming, encapsulation is defined as binding together the data and the functions that manipulate them. Class is an example of encapsulation in computer science in that it consists of data and methods that have been bundled into a single unit.
 ```javascript
 #include <iostream>
-usingnamespacestd;
-class Student{ 
+using namespace std;
+class Student { 
   // private data members 
   private: stringstudentName; 
   int studentRollno; 
@@ -35,8 +35,8 @@ class Student{
   // get method for student name to access 
   // private variable studentName 
   public: 
-    stringgetStudentName() {
-      returnstudentName; 
+    string getStudentName() {
+      return studentName; 
     } 
   // set method for student name to set 
   // the value in private variable studentName 
@@ -46,7 +46,7 @@ class Student{
   // get method for student rollno to access 
   // private variable studentRollno 
   int getStudentRollno() { 
-    returnstudentRollno; 
+    return studentRollno; 
   } 
   // set method for student rollno to set 
   // the value in private variable studentRollno 
@@ -56,7 +56,7 @@ class Student{
   // get method for student age to access 
   // private variable studentAge 
   int getStudentAge() { 
-    returnstudentAge; 
+    return studentAge; 
   } 
   // set method for student age to set 
   // the value in private variable studentAge 
