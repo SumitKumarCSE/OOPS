@@ -811,3 +811,94 @@ a
 ```
 Firstly the static block inside the main-method calling class will be implemented. Hence ‘b’ will be printed first. Then the main method is called, and now the sequence is kept as expected.
 
+**Q3: What is the output?**
+```javascript
+#include<iostrea>
+using namespace std;
+
+class ClassA {
+  public:
+    ClassA(int ii = 0) : i(11) {}
+    void show() {
+      cout<< "i = "<< i << endl;
+    }
+  private:
+    int i;
+};
+
+class ClassB {
+  public:
+    ClassB(int xx) : x(xx) {}
+    operator ClassA() const { return ClassA(x); }
+  private:
+    int x;
+};
+
+void g(ClassA a) {
+  a.show();
+}
+
+int main() {
+  ClassB b(10);
+  g(b);
+  g(20);
+  getchat();
+  return 0;
+}
+```
+Output:
+```
+i = 10
+i = 20
+```
+ClassA contains a conversion constructor. Due to this, the objects of ClassA can have integer values. So the statement g(20) works. Also, ClassB has a conversion operator overloaded. So the statement g(b) also works.
+
+**Q4: What is the output?**
+```javascript
+#include<iostream>
+using namespace std;
+class BaseClass{
+  int arr[10];
+};
+class DerivedBaseClass1: public BaseClass { };
+class DerivedBaseClass2: public BaseClass { };
+class DerivedClass: public DerivedBaseClass1, public DerivedBaseClass2{};
+int main(void) {
+  cout<<sizeof(DerivedClass);
+  return 0;
+}
+```
+Output:
+```
+If the size of the integer is 4 bytes, then the output will be 80.
+```
+Since DerivedBaseClass1 and DerivedBaseClass1 both inherit from class BaseClass, DerivedClass contains two copies of BaseClass. Hence it results in wastage of space and a large size output. It can be reduced with the help of a virtual base class.
+
+**Q5. What is the output?**
+```javascript
+#include<iostream>
+using namespace std;
+class A {
+  public:
+  void print(){ cout <<" Inside A::"; }
+};
+
+class B : public A {
+  public:
+  void print() { cout <<" Inside B"; }
+};
+
+class C: public B {
+};
+
+int main(void) {
+  C c;
+  c.print();
+  return 0;
+}
+```
+Output:
+```
+Inside B
+```
+The above program implements a Multi-level hierarchy. So the program is linearly searched up until a matching function is found. Here, it is present in both classes A and B. So class B’s print() method is called.
