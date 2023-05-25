@@ -523,7 +523,8 @@ int main() {
 }
 ```
 ![Alt text](https://github.com/SumitKumarCSE/OOPS/blob/main/shallowcopy.png)
-# Deep copy An object is created by copying all the fields, and it also allocates similar memory resources with the same value to the object. To perform deep copy, we need to explicitly define the copy constructor and assign dynamic memory as well if required. Also, it is necessary to allocate memory to the other constructors variables dynamically. 
+# Deep copy 
+An object is created by copying all the fields, and it also allocates similar memory resources with the same value to the object. To perform deep copy, we need to explicitly define the copy constructor and assign dynamic memory as well if required. Also, it is necessary to allocate memory to the other constructors variables dynamically. 
 
 A deep copy means creating a new array and copying over the values. 
 
