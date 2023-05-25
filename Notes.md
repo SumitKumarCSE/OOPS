@@ -1,12 +1,12 @@
 OOPS refers to the language that uses the concept of class and object in programming.
 The main aim of OOP is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that function. 
-
-`Class`: It is user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A 
+# Class
+It is user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A 
 class is a blueprint for an object.
 
 **Structure is saved in the stack memory, whereas the class is saved in the heap memory. Data Abstraction can't be achieved with the help of structure, but with class, it is majorly used.**
-
-`Object`: An Object is an identifiable entity with some characteristics and behaviour. An Object is an instance of a Class. When a class is defined, no memory is 
+# Object
+An Object is an identifiable entity with some characteristics and behaviour. An Object is an instance of a Class. When a class is defined, no memory is 
 allocated but when it is instantiated (i.e. an object is created) memory is allocated.
 
 Data members are the data variables and member functions are the functions used to manipulate these variables and together these data members and member functions 
@@ -45,7 +45,7 @@ outside the same class. A private member of a class can be accessed by the funct
 `Protected`: The access level of a protected modifier is within the class and outside through child class (or subclass). If you do not make the child class, it cannot be accesses outside the class.
 By default: All class members are private if you don’t specify an access specifier.
 
-## Encapsulation
+# Encapsulation
 It is defined as wrapping up of data and information under a single unit. In object-oriented programming, encapsulation is defined as binding together the data and the functions that manipulate them. Class is an example of encapsulation in computer science in that it consists of data and methods that have been bundled into a single unit.
 ```javascript
 #include <iostream>
@@ -104,7 +104,7 @@ Student Name : Avinash
 Student Rollno :101 
 Student Age :22
 ```
-## Abstraction
+# Abstraction
 Abstraction means providing only some of the information to the user by hiding its internal implementation details. We just need to know about the methods of the objects that we need to call and the input parameters needed to trigger a specific operation, excluding the details of implementation and type of action performed to get the result.
 
 Real-life example: When you send an email to someone, you just click send, and you get the success message; what happens when you click send, how data is transmitted over the network to the recipient is hidden from you (because it is irrelevant to you).
@@ -145,7 +145,7 @@ int main() {
 }
 ```
 `Encapsulation is binding and abstraction is hiding.`
-## Polymorphism
+# Polymorphism
 The word polymorphism means having many forms. In simple words, we can define polymorphism as the ability of a message to be displayed in more than one form.
 
 A person at the same time can have different characteristic. Like a man at the same time is a father, a husband, an employee. So the same person posses different behaviour in different situations. This is called polymorphism.
@@ -275,7 +275,7 @@ int main() {
 }
 ```
 
-## Inheritance
+#Inheritance
 The capability of a class to derive properties and characteristics from another class is called Inheritance. Inheritance is one of the most important features of Object-Oriented Programming.
 
 Inheritance is a feature or a process in which, new classes are created from the existing classes. The new class created is called “derived class” or “child class” and the existing class is known as the “base class” or “parent class”. The derived class now is said to be inherited from the base class.
@@ -327,7 +327,8 @@ int main() {
     return 0;
 }
 ```
-`Constructor` is a special member function automatically called when an object is created. In C++, the constructor is automatically called when an object is created. It is a special class method because it doesn’t have any return type. It has the same name as the class itself.
+# Constructor 
+is a special member function automatically called when an object is created. In C++, the constructor is automatically called when an object is created. It is a special class method because it doesn’t have any return type. It has the same name as the class itself.
 
 A constructor initializes the class data members with garbage value if we don’t put any value to it explicitly.
 
@@ -382,7 +383,8 @@ int main() {
     return 0;
 }
 ```
-`Destructor`: A destructor is a special member function that works just opposite to a constructor; unlike constructors that are used for initializing an object, destructors destroy (or delete) the object. The purpose of the destructor is to free the resources that the object may have acquired during its lifetime.
+# Destructor
+A destructor is a special member function that works just opposite to a constructor; unlike constructors that are used for initializing an object, destructors destroy (or delete) the object. The purpose of the destructor is to free the resources that the object may have acquired during its lifetime.
 
 The thing is to be noted here, if the object is created by using new or the constructor uses new to allocate memory that resides in the heap memory or the free store, the destructor should use delete to free the memory.
 
@@ -428,7 +430,8 @@ int main() {
     return 0;
 }
 ```
-`Shallow copy`: An object is created by simply copying the data of all variables of the original object. Here, the pointer will be copied but not the memory it points to. It means that the original object and the created copy will now point to the same memory address, which is generally not preferred.
+# Shallow copy
+An object is created by simply copying the data of all variables of the original object. Here, the pointer will be copied but not the memory it points to. It means that the original object and the created copy will now point to the same memory address, which is generally not preferred.
 
 Since both objects will reference the exact memory location, then changed made by one will reflect those change in another object as well. This can lead to unpleasant side effects if the elements of values are changed via some other reference. Since we wanted to create an object replica, the shallow copy will not fulfill this purpose.
 
@@ -520,7 +523,7 @@ int main() {
 }
 ```
 ![Alt text](https://github.com/SumitKumarCSE/OOPS/blob/main/shallowcopy.png)
-`Deep copy`: An object is created by copying all the fields, and it also allocates similar memory resources with the same value to the object. To perform deep copy, we need to explicitly define the copy constructor and assign dynamic memory as well if required. Also, it is necessary to allocate memory to the other constructors variables dynamically. 
+# Deep copy An object is created by copying all the fields, and it also allocates similar memory resources with the same value to the object. To perform deep copy, we need to explicitly define the copy constructor and assign dynamic memory as well if required. Also, it is necessary to allocate memory to the other constructors variables dynamically. 
 
 A deep copy means creating a new array and copying over the values. 
 
@@ -564,7 +567,8 @@ Derived Function
 
 A pure virtual function (or abstract function) in C++ is a virtual function for which we can implement, But we must override that function in the derived class; otherwise, the derived class will also become an abstract class.
 
-`Abstract Class`: Abstract classes can’t be instantiated, i.e., we cannot create an object of this class. However, we can derive a class from it and instantiate the object of the derived class. An Abstract class has at least one pure virtual function.
+#Abstract Class 
+Abstract classes can’t be instantiated, i.e., we cannot create an object of this class. However, we can derive a class from it and instantiate the object of the derived class. An Abstract class has at least one pure virtual function.
 
 It can have normal functions and variables along with pure virtual functions. 
 
@@ -637,7 +641,8 @@ int main() {
 ```
 If we do not override the pure virtual function in the derived class, then the derived class also becomes an abstract class.
 
-`Friend Function`: If a function is defined as a friend function in C++, then the protected and private data of a class can be accessed using the function. 
+# Friend Function
+If a function is defined as a friend function in C++, then the protected and private data of a class can be accessed using the function. 
 
 A class’s friend function is defined outside that class’s scope, but it has the right to access all private and protected members of the class. Even though the prototypes for friend functions appear in the class definition, friends are not member functions. 
 
@@ -676,7 +681,8 @@ Characteristics of friend function:
 
 ● A friend function can be a global function or a member of another class.
 
-`Interface`: An interface refers to a special type of class, which contains methods, but not their definition. Only the declaration of methods is allowed inside an interface. To use an interface, you can't create objects. Instead, you need to implement that interface and define the methods for their implementation.
+# Interface
+An interface refers to a special type of class, which contains methods, but not their definition. Only the declaration of methods is allowed inside an interface. To use an interface, you can't create objects. Instead, you need to implement that interface and define the methods for their implementation.
 ```javascript
 public interface Printable {
     void print();
@@ -717,6 +723,7 @@ and their memories are not handled properly, then it might lead to certain memor
 Through garbage collection, the unwanted memory is freed up by removing the
 objects that are no longer needed.
 
+# Questions
 **Q1: What is the output?**
 ```javascript
 #include<iostream>
