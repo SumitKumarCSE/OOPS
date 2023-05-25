@@ -338,75 +338,48 @@ Constructors are special class members which are called by the compiler every ti
 If you created a parameterized constructor and you are willing to create the object without having any parameter then it will throw a compile time error.
 So, if you are having a parameterized constructor, and want to create the object without a parameter, then you must have to create a constructor without parameter first.
 
-```javascript
-class Geeks
-{
-    public:
-    int id;
-     
-    //Default Constructor
-    Geeks()
-    {
-        cout << "Default Constructor called" << endl;
-        id=-1;
-    }
-     
-    //Parameterized Constructor
-    Geeks(int x)
-    {
-        cout <<"Parameterized Constructor called "<< endl;
-        id=x;
-    }
-};
-int main() {
-     
-    // obj1 will call Default Constructor
-    Geeks obj1;
-    cout <<"Geek id is: "<<obj1.id << endl;
-     
-    // obj2 will call Parameterized Constructor
-    Geeks obj2(21);
-    cout <<"Geek id is: " <<obj2.id << endl;
-    return 0;
-}
-```
 A Copy Constructor creates a new object, which is exact copy of the existing object. The compiler provides a default Copy Constructor to all the classes. 
 ```javascript
-class smartphone{ 
-	//Data Members(Properties) 
-	String model; 
-	int year_of_manufacture; 
-	bool_5g_supported; 
-public: 
-	//default constructor 
-	smartphone(){ 
-		model ="unknown"; 
-		year_of_manufacture =0; 
-		_5g_supported =false; 
-	} 
-	//parameterized constructor smartphone(stringmodel_string,intmanufacture,bool_5g_){ 
-	//initialising data members 
-	model = model_string; 
-	year_of_manufacture = manufacture; 
-	_5g_supported = _5g_; 
-} 
-// copy constructor 
-smartphone(smartphone &obj){ 
-	// copies data of the obj parameter 
-	model = obj.model; 
-	year_of_manufacture = obj.year_of_manufacture; 
-	_5g_supported = obj._5g_supported; 
-} 
-}; 
+#include <iostream>
+using namespace std;
 
-int main(){ 
-	//creating objects of smartphone class 
-	// using default constructor 
-	smartphone unknown; 
-	// using parameterized constructor 
-	smartphoneiphone("iphone 11",2019,false); 
-	// using copy constructor 
-	smartphoneiphone_2(iphone); 
+class Car {
+private:
+    string brand;
+    int year;
+
+public:
+    // Default constructor
+    Car() : brand(""), year(0) {}
+
+    // Parameterized constructor
+    Car(const string& brand, int year) : brand(brand), year(year) {}
+
+    // Copy constructor
+    Car(const Car& other) : brand(other.brand), year(other.year) {}
+
+    // Getter methods
+    string getBrand() const {
+        return brand;
+    }
+
+    int getYear() const {
+        return year;
+    }
+};
+
+int main() {
+    // Create a Car object using the parameterized constructor
+    Car car1("Toyota", 2022);
+
+    // Create a new Car object and initialize it using the copy constructor
+    Car car2 = car1;
+
+    // Display the details of both Car objects
+    cout << "Car 1: " << car1.getBrand() << " " << car1.getYear() << endl;
+    cout << "Car 2: " << car2.getBrand() << " " << car2.getYear() << endl;
+
+    return 0;
 }
 ```
 `Destructor`: A destructor is a special member function that works just opposite to a constructor; unlike constructors that are used for initializing an object, destructors destroy (or delete) the object. The purpose of the destructor is to free the resources that the object may have acquired during its lifetime.
