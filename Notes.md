@@ -4,12 +4,35 @@ The main aim of OOP is to bind together the data and the functions that operate 
 `Class`: It is user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A 
 class is a blueprint for an object.
 
+**Structure is saved in the stack memory, whereas the class is saved in the heap memory. Data Abstraction can't be achieved with the help of structure, but with class, it is majorly used.**
+
 `Object`: An Object is an identifiable entity with some characteristics and behaviour. An Object is an instance of a Class. When a class is defined, no memory is 
 allocated but when it is instantiated (i.e. an object is created) memory is allocated.
 
 Data members are the data variables and member functions are the functions used to manipulate these variables and together these data members and member functions 
 define the properties and behaviour of the object in a class.
 In the above example of class Car, the data member will be speed limit, mileage, etc and member functions can apply brakes, increase speed etc.
+
+**It is not always necessary to create objects from class.** An object is necessary to be created if the base class has non-static methods. But if the class has static methods, then objects don't need to be created. We can call the class method directly in this case, using the class name.
+```javascript
+#include <iostream>
+using namespace std;
+
+class MathUtils {
+public:
+    static int multiply(int a, int b) {
+        return a * b;
+    }
+};
+
+int main() {
+    // Accessing static member without object instantiation
+    int result = MathUtils::multiply(5, 3);
+    cout << "Result: " << result << endl;
+
+    return 0;
+}
+```
 
 `Access Specifier`: Access Specifier in a class are used to assign access to the class members. It sets some restrictions on the class members from accessing the 
 outside functions directly.
@@ -679,3 +702,112 @@ Characteristics of friend function:
 ● A friend function cannot access the private and protected data members of the class directly. It needs to make use of a class object and then access the members using the dot operator. 
 
 ● A friend function can be a global function or a member of another class.
+
+`Interface`: An interface refers to a special type of class, which contains methods, but not their definition. Only the declaration of methods is allowed inside an interface. To use an interface, you can't create objects. Instead, you need to implement that interface and define the methods for their implementation.
+```javascript
+public interface Printable {
+    void print();
+}
+
+public class Book implements Printable {
+    public void print() {
+        System.out.println("Printing a book.");
+    }
+}
+
+public class Document implements Printable {
+    public void print() {
+        System.out.println("Printing a document.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Printable printable1 = new Book();
+        Printable printable2 = new Document();
+
+        printable1.print();  // Output: Printing a book.
+        printable2.print();  // Output: Printing a document.
+    }
+}
+```
+
+**The main difference between interface and abstract classes is that, when an interface is implemented, the subclass must define all its methods and provide its implementation. Whereas when an abstract class is inherited, the subclass does not need to provide the definition of its abstract method, until and unless the subclass is using it.
+Also, an abstract class can contain abstract methods as well as non-abstract methods.**
+
+`Garbage Collection`: Object-oriented programming revolves around entities like objects. Each object
+
+consumes memory and there can be multiple objects of a class. So if these objects
+and their memories are not handled properly, then it might lead to certain memoryrelated errors and the system might fail.
+
+**Garbage collection** refers to this mechanism of handling the memory in the program.
+Through garbage collection, the unwanted memory is freed up by removing the
+objects that are no longer needed.
+
+**Q1: What is the output?**
+```javascript
+#include<iostream>
+using namespace std;
+class BaseClass1 {
+  public:
+    BaseClass1() { 
+      cout << " BaseClass1 constructor called" << endl; 
+    }
+};
+
+class BaseClass2 {
+  public:
+    BaseClass2() { 
+      cout << "BaseClass2 constructor called" << endl;
+    }
+};
+
+class DerivedClass: public BaseClass1, public BaseClass2 {
+  public:
+    DerivedClass() { 
+      cout << "DerivedClass constructor called" << endl; 
+    }
+};
+
+int main() {
+  DerivedClass derived_class;
+  return 0;
+}
+```
+Output:
+```
+BaseClass1 constructor called
+BaseClass2 constructor called
+DerivedClass constructor called
+```
+The above program demonstrates Multiple inheritances. So when the Derived class’s constructor is called, it automatically calls the Base class's constructors from left to right.
+
+**Q2: What is the output?**
+```javascript
+class Scaler {
+  static int i;
+  static {
+    System.out.println(“a”);
+    i = 100;
+  }
+}
+
+public class StaticBlock {
+  static {
+    System.out.println(“b”);
+  }
+  public static void main(String[] args) {
+    System.out.println(“c”);
+    System.out.println(Scaler.i);
+ }
+}
+```
+Output:
+```
+b
+c
+a
+100
+```
+Firstly the static block inside the main-method calling class will be implemented. Hence ‘b’ will be printed first. Then the main method is called, and now the sequence is kept as expected.
+
