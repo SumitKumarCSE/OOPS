@@ -34,7 +34,7 @@ int main() {
 }
 ```
 
-`Access Specifier`: Access Specifier in a class are used to assign access to the class members. It sets some restrictions on the class members from accessing the 
+`Access Specifier`: Access Specifier in a class are used to assign access to the class members. It defines accessibility and visibility of class members. It sets some restrictions on the class members from accessing the 
 outside functions directly.
 
 `Public`: All the class members with a public modifier can be accessed from anywhere (inside and outside the class). A public member can be accessed outside the class.
